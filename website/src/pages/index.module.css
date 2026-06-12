@@ -1,0 +1,95 @@
+.hero {
+  background: linear-gradient(120deg, #2a3aa6 0%, #4f6bf6 62%, #6d8bff 100%);
+  color: #fff;
+  padding: 5rem 0;
+}
+
+.heroInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.heroText {
+  max-width: 640px;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+}
+
+.heroTagline {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin: 0 0 2rem;
+}
+
+.heroButton {
+  background: #fff;
+  color: #2a3aa6;
+  font-weight: 700;
+  border: none;
+}
+
+.heroButton:hover {
+  background: #eef1ff;
+  color: #2a3aa6;
+}
+
+.heroLogo {
+  width: 220px;
+  height: 220px;
+  opacity: 0.92;
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.25));
+}
+
+.features {
+  padding: 3.5rem 0 4.5rem;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 1.75rem;
+  background: var(--ifm-background-surface-color);
+}
+
+.cardIcon {
+  color: var(--ifm-color-primary);
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.cardText {
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+}
+
+@media (max-width: 996px) {
+  .hero {
+    padding: 3.5rem 0;
+  }
+  .heroTitle {
+    font-size: 2.25rem;
+  }
+  .heroLogo {
+    display: none;
+  }
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+}
