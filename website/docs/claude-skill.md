@@ -1,82 +1,83 @@
 ---
-id: claude-skill
-title: Claude skill
-sidebar_position: 21
+title: Claude Skill (Node.js - AI assistant)
 ---
 
-# Claude skill
+The official **Claude skill** for the Node.js package — `@themarketer/api-client` — teaches Claude how to use this package correctly: module APIs, payload shapes, REST vs tracking gateways, NestJS and Nodemailer wiring, and exception handling. It reduces guesswork when you integrate or debug in Claude **Code**, **Claude Desktop**, or **Claude** on the web.
 
-The repository ships a **Claude skill** that teaches AI assistants how to use
-this Node client correctly. With it enabled, Claude (Code, Desktop, or web) can
-generate accurate integration code, build valid payloads, and handle errors the
-right way — usually without you having to paste the docs.
+Maintained in GitHub: [the-marketer/claude-docs-skill](https://github.com/the-marketer/claude-docs-skill).
 
-The skill lives in the repo at
-[`skill/SKILL.md`](https://github.com/the-marketer/api-client-node/blob/main/skill/SKILL.md).
+:::tip Using PHP instead of Node.js?
+This page covers the **Node.js** skill. If you work with the PHP package, there is a separate skill — `themarketer/api-client-php` — published in the **same repository** ([the-marketer/claude-docs-skill](https://github.com/the-marketer/claude-docs-skill)). Install that one instead for PHP projects.
+:::
 
-## What the skill teaches
+## What the skill helps with
 
-- **TypeScript usage for every module** — `subscribers`, `orders`,
-  `transactionals`, `products`, `campaigns`, `events`, `coupons`, `loyalty`,
-  `reviews`, `mobilePush`, `reports`, plus the credential utilities on `Client`.
-- **When to use the REST vs. tracking gateway** (e.g. most `events` methods and
-  `serveJavascript` go through tracking and require `trackingKey`).
-- **Payload specifications** — field names, types, required vs. optional, and
-  allowed enum values (report types, campaign `type`/`mode`, loyalty `action`,
-  push token `type`, feed `type`).
-- **The calling convention** — which methods take a payload object and which take
-  positional arguments.
-- **Integrations** — the NestJS module (`@themarketer/api-client/nestjs`) and the
-  Nodemailer transport (`@themarketer/api-client/nodemailer`).
-- **Error handling** — `ValidationException`, `UnauthorizedException`,
-  `CustomerNotFoundException`, `MethodNotAllowedException`, `ApiException`, and
-  the HTTP-status → exception mapping.
+- Correct Node.js / TypeScript for all client modules (`orders()`, `subscribers()`, `campaigns()`, `products()`, `transactionals()`, `reports()`, `events()`, `coupons()`, `loyalty()`, `reviews()`, `mobilePush()`, and related utilities).
+- Choosing the **REST gateway** vs **tracking gateway** appropriately.
+- Payload fields: names, types, required vs optional, and enums where applicable.
+- NestJS: the `TheMarketerModule` global provider, and the `createTheMarketerTransport` Nodemailer transport.
+- Catching errors with the right exception types in a sensible order.
 
-## Platform support
+When your question relates to this package, Claude can load the skill automatically so answers follow the same schemas and conventions as these docs.
 
-The skill works across all three Claude environments:
+## Releases
 
-1. **Claude Code** (CLI / IDE) — recommended
-2. **Claude Desktop**
-3. **Claude on the web**
+Packaged `.skill` files and install notes are published on **[GitHub Releases](https://github.com/the-marketer/claude-docs-skill/releases)**. Install using the **latest release** for up-to-date content; older tags remain available if you need to pin a version (for example [v0.1.0](https://github.com/the-marketer/claude-docs-skill/releases/tag/v0.1.0)).
 
-## Installation
+## Install: Claude Code (recommended)
 
-### Claude Code (manual)
+From a Claude Code session:
 
-Claude Code auto-loads any skill placed in its skills directories. Copy the
-repo's `skill/` folder into one of them:
-
-```bash
-# Personal — available in every project
-cp -r skill ~/.claude/skills/themarketer-api-client
-
-# Project-specific — checked in with your repo
-mkdir -p .claude/skills
-cp -r skill .claude/skills/themarketer-api-client
+```text
+/plugin marketplace add the-marketer/claude-docs-skill
+/plugin install themarketer-api-client-node@themarketer-api-client
+/reload-plugins
 ```
 
-Each target directory must contain the `SKILL.md` file. Reload skills (restart
-Claude Code, or run `/reload`) and the skill becomes available.
+Confirm it appears when you ask what skills are available (`themarketer-api-client-node`). The skill may be addressed as `themarketer-api-client-node:themarketer-api-client-node` (plugin name + skill name); you typically do not need to type a slash command—Claude loads it when the topic matches.
 
-### Claude Desktop / web
+## Install: Claude Desktop / Claude web
 
-1. Package the `skill/` directory as a `.skill` file (a zip of the folder
-   containing `SKILL.md`).
-2. In Claude, open **Customize → Skills → Create skill**.
-3. Upload the `.skill` file and **enable** it.
-4. Make sure **code execution** is allowed in settings if the skill needs it.
+1. Download **`themarketer-api-client-node.skill`** from the [latest GitHub Release](https://github.com/the-marketer/claude-docs-skill/releases/latest).
+2. In Claude: **Customize → Skills → + → Create skill**.
+3. Upload the `.skill` file and enable it.
+4. Ensure **code execution** is allowed where your account/org requires it (Settings → Capabilities, or org-level Skills settings for Team/Enterprise).
 
-## Activation
+## Install: manual (clone skill folder)
 
-You typically **do not need to type a slash command** — Claude loads the skill
-automatically when your question matches the topic (e.g. "add a subscriber with
-the The Marketer client", "why am I getting a `ValidationException`?", "wire the
-NestJS module"). You can also reference it explicitly by name.
+**Personal (all projects):**
 
-## Keeping it up to date
+```bash
+mkdir -p ~/.claude/skills
+git clone https://github.com/the-marketer/claude-docs-skill /tmp/tm-skill
+cp -r /tmp/tm-skill/skills/themarketer-api-client-node ~/.claude/skills/
+rm -rf /tmp/tm-skill
+```
 
-The skill is plain Markdown maintained alongside the client in
-[`skill/SKILL.md`](https://github.com/the-marketer/api-client-node/blob/main/skill/SKILL.md).
-When the client's methods, payloads, or integrations change, update that file so
-the skill stays accurate, then re-copy it into your skills directory.
+**Single project:**
+
+```bash
+cd /path/to/your/project
+mkdir -p .claude/skills
+git clone https://github.com/the-marketer/claude-docs-skill /tmp/tm-skill
+cp -r /tmp/tm-skill/skills/themarketer-api-client-node .claude/skills/
+rm -rf /tmp/tm-skill
+```
+
+You can also unzip a downloaded `.skill` archive into your skills directory.
+
+## Example prompts
+
+These illustrate the kinds of questions that trigger useful, schema-aware answers:
+
+- “Help me sync an order with `@themarketer/api-client` from Node.”
+- “I'm getting a `ValidationException` on `viewProduct`—what's wrong?”
+- “Set up the Nodemailer transport for The Marketer.”
+- “Push 200 subscribers in bulk through The Marketer.”
+- “What's the payload for `campaigns().create` with `type=email`?”
+
+You do not always need to mention the package name explicitly; related wording about The Marketer APIs or NestJS integration often suffices.
+
+## Contributing and versioning
+
+The Node.js skill content lives under `skills/themarketer-api-client-node/` in the repository (the PHP skill lives alongside it under `skills/themarketer-api-client-php/`). The skill project follows SemVer; suggest improvements via pull requests on [the-marketer/claude-docs-skill](https://github.com/the-marketer/claude-docs-skill).

@@ -91,8 +91,6 @@ Optional smoke test against a real API (set env vars first):
 THEMARKETER_CUSTOMER_ID=... THEMARKETER_REST_KEY=... npx tsx scripts/smoke.ts
 ```
 
-For a full architecture guide (layers, request flow, how to navigate the codebase), see **[ARCHITECTURE.md](ARCHITECTURE.md)**.
-
 ## Project layout
 
 ```

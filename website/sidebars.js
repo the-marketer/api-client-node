@@ -26,12 +26,12 @@ const sidebars = {
     },
     'credentials-utilities',
     'errors',
+    'claude-skill',
     {
       type: 'category',
       label: 'Framework Integrations',
       items: ['integrations/nestjs', 'integrations/nodemailer'],
     },
-    'claude-skill',
   ],
 };
 
