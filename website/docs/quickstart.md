@@ -7,7 +7,7 @@ sidebar_position: 3
 ## 1) Install
 
 ```bash
-npm install @themarketer/api-client
+npm install @the-marketer/api-client
 ```
 
 ## 2) Initialize client
@@ -24,7 +24,7 @@ npm install @themarketer/api-client
 | `maxRetryAttempts` | `number` | `1` | Retries per gateway HTTP layer when requests fail transiently. |
 
 ```typescript
-import { Client } from '@themarketer/api-client';
+import { Client } from '@the-marketer/api-client';
 
 const client = new Client({
   customerId: 'YOUR_CUSTOMER_ID',
@@ -57,7 +57,7 @@ THEMARKETER_TRACKING_KEY=your_tracking_key
 
 ```typescript
 import 'dotenv/config'; // loads .env into process.env (works on any Node version)
-import { Client } from '@themarketer/api-client';
+import { Client } from '@the-marketer/api-client';
 
 const client = new Client({
   customerId: process.env.THEMARKETER_CUSTOMER_ID,

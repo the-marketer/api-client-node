@@ -33,7 +33,7 @@ Endpoints that use the **tracking** base URL also need a **tracking key** in con
 | `maxRetryAttempts` | `number` | `1` | HTTP retries in gateways. |
 
 ```typescript
-import { Client } from '@themarketer/api-client';
+import { Client } from '@the-marketer/api-client';
 
 const client = new Client({
   customerId: 'YOUR_CUSTOMER_ID',
@@ -69,7 +69,7 @@ The client does not read the environment on its own — load your `.env` with
 
 ```typescript
 import 'dotenv/config'; // loads .env into process.env (works on any Node version)
-import { Client } from '@themarketer/api-client';
+import { Client } from '@the-marketer/api-client';
 
 const client = new Client({
   customerId: process.env.THEMARKETER_CUSTOMER_ID,

@@ -1,5 +1,5 @@
 {
-  "name": "@themarketer/api-client",
+  "name": "@the-marketer/api-client",
   "version": "0.1.0",
   "description": "The Marketer API client for Node.js (TypeScript)",
   "type": "module",
@@ -80,5 +80,16 @@
     "tsx": "^4.22.3",
     "typescript": "^5.8.2",
     "vitest": "^3.0.9"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-marketer/api-client-node.git"
+  },
+  "homepage": "https://github.com/the-marketer/api-client-node#readme",
+  "bugs": {
+    "url": "https://github.com/the-marketer/api-client-node/issues"
   }
 }

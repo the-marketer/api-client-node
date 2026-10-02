@@ -6,7 +6,7 @@ title: Events
 Send standard and custom behavioral events.
 
 ```typescript
-import { Client } from '@themarketer/api-client';
+import { Client } from '@the-marketer/api-client';
 
 const client = new Client({
   customerId: 'YOUR_CUSTOMER_ID',

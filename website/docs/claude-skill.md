@@ -2,7 +2,7 @@
 title: Claude Skill (Node.js - AI assistant)
 ---
 
-The official **Claude skill** for the Node.js package — `@themarketer/api-client` — teaches Claude how to use this package correctly: module APIs, payload shapes, REST vs tracking gateways, NestJS and Nodemailer wiring, and exception handling. It reduces guesswork when you integrate or debug in Claude **Code**, **Claude Desktop**, or **Claude** on the web.
+The official **Claude skill** for the Node.js package — `@the-marketer/api-client` — teaches Claude how to use this package correctly: module APIs, payload shapes, REST vs tracking gateways, NestJS and Nodemailer wiring, and exception handling. It reduces guesswork when you integrate or debug in Claude **Code**, **Claude Desktop**, or **Claude** on the web.
 
 Maintained in GitHub: [the-marketer/claude-docs-skill](https://github.com/the-marketer/claude-docs-skill).
 
@@ -70,7 +70,7 @@ You can also unzip a downloaded `.skill` archive into your skills directory.
 
 These illustrate the kinds of questions that trigger useful, schema-aware answers:
 
-- “Help me sync an order with `@themarketer/api-client` from Node.”
+- “Help me sync an order with `@the-marketer/api-client` from Node.”
 - “I'm getting a `ValidationException` on `viewProduct`—what's wrong?”
 - “Set up the Nodemailer transport for The Marketer.”
 - “Push 200 subscribers in bulk through The Marketer.”

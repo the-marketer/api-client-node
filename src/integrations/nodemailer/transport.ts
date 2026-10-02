@@ -95,8 +95,8 @@ function toApiAttachments(
  *
  * ```ts
  * import nodemailer from 'nodemailer';
- * import { Client } from '@themarketer/api-client';
- * import { createTheMarketerTransport } from '@themarketer/api-client/nodemailer';
+ * import { Client } from '@the-marketer/api-client';
+ * import { createTheMarketerTransport } from '@the-marketer/api-client/nodemailer';
  *
  * const transporter = nodemailer.createTransport(createTheMarketerTransport(client));
  * await transporter.sendMail({ to, from, subject, html });

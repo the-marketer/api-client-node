@@ -4,7 +4,7 @@ title: Overview
 sidebar_position: 2
 ---
 
-`@themarketer/api-client` is the official Node.js / TypeScript client for The Marketer API.
+`@the-marketer/api-client` is the official Node.js / TypeScript client for The Marketer API.
 
 ## What this package does
 

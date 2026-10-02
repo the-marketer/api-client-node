@@ -8,15 +8,15 @@ title: Nodemailer
 Delivers mail through the transactional email API, so any Nodemailer-based code
 (including NestJS Mailer) can send via The Marketer.
 
-Import from `@themarketer/api-client/nodemailer`. `nodemailer` is an optional
+Import from `@the-marketer/api-client/nodemailer`. `nodemailer` is an optional
 peer dependency.
 
 ## Usage
 
 ```typescript
 import nodemailer from 'nodemailer';
-import { Client } from '@themarketer/api-client';
-import { createTheMarketerTransport } from '@themarketer/api-client/nodemailer';
+import { Client } from '@the-marketer/api-client';
+import { createTheMarketerTransport } from '@the-marketer/api-client/nodemailer';
 
 const client = new Client({ customerId, restKey });
 const transporter = nodemailer.createTransport(createTheMarketerTransport(client));

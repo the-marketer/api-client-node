@@ -1,4 +1,4 @@
-# @themarketer/api-client
+# @the-marketer/api-client
 
 TypeScript / Node.js client for the **The Marketer** API.
 
@@ -11,14 +11,14 @@ TypeScript / Node.js client for the **The Marketer** API.
 ## Install
 
 ```bash
-npm install @themarketer/api-client
+npm install @the-marketer/api-client
 ```
 
 ## Usage
 
 ```typescript
 import 'dotenv/config'; // loads .env into process.env (works on any Node version)
-import { Client } from '@themarketer/api-client';
+import { Client } from '@the-marketer/api-client';
 
 const client = new Client({
   customerId: process.env.THEMARKETER_CUSTOMER_ID!,
@@ -48,7 +48,7 @@ optional peer dependency, so the core client stays dependency-light.
 **NestJS** — a global singleton provider:
 
 ```typescript
-import { TheMarketerModule } from '@themarketer/api-client/nestjs';
+import { TheMarketerModule } from '@the-marketer/api-client/nestjs';
 
 @Module({ imports: [TheMarketerModule.forRoot({ customerId, restKey })] })
 export class AppModule {}
@@ -58,7 +58,7 @@ export class AppModule {}
 
 ```typescript
 import nodemailer from 'nodemailer';
-import { createTheMarketerTransport } from '@themarketer/api-client/nodemailer';
+import { createTheMarketerTransport } from '@the-marketer/api-client/nodemailer';
 
 const transporter = nodemailer.createTransport(createTheMarketerTransport(client));
 await transporter.sendMail({ to, from, subject, html });
@@ -90,6 +90,21 @@ Optional smoke test against a real API (set env vars first):
 ```bash
 THEMARKETER_CUSTOMER_ID=... THEMARKETER_REST_KEY=... npx tsx scripts/smoke.ts
 ```
+
+## Releasing
+
+Publishing is automated by `.github/workflows/publish.yml`: on every push to
+`main` it checks whether the `package.json` version already exists on npm and,
+if not, runs typecheck + tests + build, publishes `@the-marketer/api-client`
+with provenance, and creates the `vX.Y.Z` tag and GitHub release.
+
+```bash
+npm version patch   # or minor / major — bumps package.json and commits
+git push --follow-tags
+```
+
+It needs an `NPM_TOKEN` repository secret (npm granular access token with
+publish rights, or trusted publishing configured on npmjs.com).
 
 ## Project layout
 

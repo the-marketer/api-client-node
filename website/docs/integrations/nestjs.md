@@ -8,14 +8,14 @@ title: NestJS
 Registers a single shared `Client` as a **global** provider, injectable anywhere
 in your NestJS app.
 
-Import from the subpath `@themarketer/api-client/nestjs`. `@nestjs/common` is an
+Import from the subpath `@the-marketer/api-client/nestjs`. `@nestjs/common` is an
 optional peer dependency (already present in a NestJS app).
 
 ## Register the module
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { TheMarketerModule } from '@themarketer/api-client/nestjs';
+import { TheMarketerModule } from '@the-marketer/api-client/nestjs';
 
 @Module({
   imports: [
@@ -50,8 +50,8 @@ By class, or via the `THE_MARKETER_CLIENT` token:
 
 ```typescript
 import { Injectable, Inject } from '@nestjs/common';
-import { Client } from '@themarketer/api-client';
-import { THE_MARKETER_CLIENT } from '@themarketer/api-client/nestjs';
+import { Client } from '@the-marketer/api-client';
+import { THE_MARKETER_CLIENT } from '@the-marketer/api-client/nestjs';
 
 @Injectable()
 export class NewsletterService {

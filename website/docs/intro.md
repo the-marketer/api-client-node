@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Welcome to The Marketer API Client docs.
 
-This documentation is for teams integrating the Node.js / TypeScript package `@themarketer/api-client`.
+This documentation is for teams integrating the Node.js / TypeScript package `@the-marketer/api-client`.
 
 **Official theMarketer API Reference** — HTTP endpoints, parameters, and flows for the same platform APIs this client wraps: [developers.themarketer.com/reference](https://developers.themarketer.com/reference) (the developer portal home redirects here). Use it alongside these docs for staging setup, endpoint details, and topics such as [testing on a staging environment](https://developers.themarketer.com/reference/testing-on-a-staging-environment).
 
