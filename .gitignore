@@ -11,3 +11,6 @@ website/.docusaurus/
 # Local secrets — keep .env.example tracked
 .env
 .env.local
+
+# IDE
+.idea/
