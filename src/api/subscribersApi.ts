@@ -63,8 +63,9 @@ export class SubscribersApi extends AbstractApi
     return this.context.rest.post('/delete_subscriber', deleteSubscriberToApiPayload(dto));
   }
 
-  async removeSubscriber(email: string, channels?: string | null): Promise<GatewayJsonResult> {
-    const dto = parseRemoveSubscriber({ email, channels });
+  /** `email` and/or `phone`; the contact is looked up by email first, then by phone. */
+  async removeSubscriber(email?: string | null, channels?: string | null, phone?: string | null): Promise<GatewayJsonResult> {
+    const dto = parseRemoveSubscriber({ email, channels, phone });
     return this.context.rest.post('/remove_subscriber', removeSubscriberToApiPayload(dto));
   }
 

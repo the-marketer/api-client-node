@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { SubscribersApi } from '../src/api/subscribersApi';
+import { ValidationException } from '../src/exceptions';
 import {
   MOCK_API_KEY,
   MOCK_DOMAIN,
@@ -158,6 +159,39 @@ describe('SubscribersApi', () => {
       email: 'john@doe.com',
       channels: 'email',
     });
+  });
+
+  it('removeSubscriber posts phone only', async () => {
+    const [api, bucket] = createApiWithMock(SubscribersApi, [
+      { status: 200, body: '{"result":true}' },
+    ]);
+
+    await api.removeSubscriber(null, null, '+40700000000');
+
+    const req = lastRequest(bucket);
+    expect(new URL(req.url).pathname).toMatch(/\/remove_subscriber$/);
+    expect(JSON.parse(await req.text())).toEqual({ phone: '+40700000000' });
+  });
+
+  it('removeSubscriber posts email, phone and channels', async () => {
+    const [api, bucket] = createApiWithMock(SubscribersApi, [
+      { status: 200, body: '{"result":true}' },
+    ]);
+
+    await api.removeSubscriber('user@example.com', 'sms', '+40700000000');
+
+    const req = lastRequest(bucket);
+    expect(JSON.parse(await req.text())).toEqual({
+      email: 'user@example.com',
+      phone: '+40700000000',
+      channels: 'sms',
+    });
+  });
+
+  it('removeSubscriber throws when neither email nor phone is given', async () => {
+    const [api] = createApiWithMock(SubscribersApi, []);
+
+    await expect(api.removeSubscriber()).rejects.toThrow(ValidationException);
   });
 
   it('anonymizeEmail posts to anonymize-email', async () => {
