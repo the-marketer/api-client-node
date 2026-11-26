@@ -32,4 +32,39 @@ describe('LoyaltyApi', () => {
       points: 100,
     });
   });
+
+  it('getInfo sends phone query when no email', async () => {
+    const [api, bucket] = createApiWithMock(LoyaltyApi, [
+      { status: 200, body: '{}' },
+    ]);
+
+    await api.getInfo(null, '0735111411');
+
+    const params = new URL(lastRequest(bucket).url).searchParams;
+    expect(params.get('phone')).toBe('0735111411');
+    expect(params.has('email')).toBe(false);
+  });
+
+  it('getInfo rejects when email and phone are missing', async () => {
+    const [api] = createApiWithMock(LoyaltyApi, []);
+
+    await expect(api.getInfo()).rejects.toThrow('Either email or phone is required.');
+  });
+
+  it('managePoints posts phone when no email', async () => {
+    const [api, bucket] = createApiWithMock(LoyaltyApi, [
+      { status: 200, body: '{}' },
+    ]);
+
+    await api.managePoints(null, 'decrease', 5, '0735111411');
+
+    const body = JSON.parse(await lastRequest(bucket).text());
+    expect(body).toEqual({ phone: '0735111411', action: 'decrease', points: 5 });
+  });
+
+  it('managePoints rejects when email and phone are missing', async () => {
+    const [api] = createApiWithMock(LoyaltyApi, []);
+
+    await expect(api.managePoints(null, 'increase', 5)).rejects.toThrow('Either email or phone is required.');
+  });
 });
